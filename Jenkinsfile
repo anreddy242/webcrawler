@@ -6,8 +6,7 @@ pipeline {
             steps {
                 sh 'echo removing old checkout'
                 sh 'rm -rf /var/lib/jenkins/workspace/webcrawler-test/webcrawler'
-                sh 'docker rm webcrawler'
-                sh 'docker rmi webcrawler:latest'
+                sh 'sleep 10'
             }
         }
 
@@ -57,6 +56,12 @@ pipeline {
                 // Run psql command
                 sh 'psql -h localhost -d webcrawler -U postgres -c "select * from webcrawler_data;"'
                 }
+            }
+        }
+        stage('Post Cleanup') {
+            steps {
+                sh 'docker rm webcrawler'
+                sh 'docker rmi webcrawler:latest'
             }
         }
     
