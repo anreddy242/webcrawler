@@ -57,14 +57,14 @@ pipeline {
                 sh 'psql -h localhost -d webcrawler -U postgres -c "select * from webcrawler_data;"'
                 }
             }
-        }
+
         stage('Post Cleanup') {
             steps {
                 sh 'docker rm webcrawler'
                 sh 'docker rmi webcrawler:latest'
             }
         }
-    
+        }
     post {
         success {
             echo 'Pipeline succeeded! Clean up resources if necessary.'
