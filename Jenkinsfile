@@ -5,7 +5,7 @@ pipeline {
         stage('Cleanup') {
             steps {
                 sh 'echo removing old checkout'
-                sh 'rm -rf /var/lib/jenkins/workspace/webcrawler-test/webcrawler'
+                sh 'rm -rf /var/lib/jenkins/workspace/webcrawler_main/webcrawler'
                 sh 'sleep 10'
             }
         }
